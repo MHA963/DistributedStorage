@@ -11,7 +11,7 @@ dispatcher = RPCDispatcher()
 transport = WsgiServerTransport(queue_class=gevent.queue.Queue)
 
 # start wsgi server as a background-greenlet
-wsgi_server = gevent.pywsgi.WSGIServer(('127.0.0.1', 80), transport.handle)
+wsgi_server = gevent.pywsgi.WSGIServer(('127.0.0.1', 5000), transport.handle)
 gevent.spawn(wsgi_server.serve_forever)
 
 rpc_server = RPCServerGreenlets(
